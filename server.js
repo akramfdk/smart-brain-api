@@ -6,6 +6,7 @@ import handleRegister from './controllers/register.js';
 import handleSignin from './controllers/signin.js';
 import handleProfileGet from './controllers/profile.js';
 import handleImage from './controllers/image.js';
+import { handleImageUrl } from './controllers/image.js';
 
 const app = express()
 
@@ -36,6 +37,8 @@ app.post('/register', handleRegister(db, bcrypt));
 app.get('/profile/:id', handleProfileGet(db));
 
 app.put('/image', handleImage(db));
+
+app.post('/imageurl', handleImageUrl);
 
 app.listen(3000, () => {
     console.log("app is running on port 3000");
