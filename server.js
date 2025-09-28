@@ -24,6 +24,10 @@ const db = knex({
 app.use(cors());
 app.use(express.json());
 
+app.get("/", (req, res) => {
+  res.send("Smart Brain backend is running");
+});
+
 // app.get("/", (req, res) => {
 //     db.select('*').from('users')
 //         .then(data => res.json(data))
