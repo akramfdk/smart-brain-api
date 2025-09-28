@@ -10,16 +10,24 @@ import { handleImageUrl } from './controllers/image.js';
 
 const app = express()
 
+
+// const db = knex({
+//     client: 'pg',
+//     connection: {
+//         host: '127.0.0.1',
+//         port: 5432,
+//         user: 'postgres',
+//         password: 'test',
+//         database: 'smart-brain',
+//     },
+// });
+
 const db = knex({
-    client: 'pg',
-    connection: {
-        host: '127.0.0.1',
-        port: 5432,
-        user: 'postgres',
-        password: 'test',
-        database: 'smart-brain',
-    },
+  client: 'pg',
+  connection: process.env.DATABASE_URL,
+  ssl: { rejectUnauthorized: false }
 });
+
 
 app.use(cors());
 app.use(express.json());
